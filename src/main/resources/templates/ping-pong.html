@@ -1,38 +1,38 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main}">
     <head>
-        <title>Bookshelf</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>   
+        <title>Ping pong</title>
+
     </head>
     <body>
-    
-        <div th:replace="fragments/menu :: main"></div>
-        <div class="w3-container s12 m4 l3">
-        <table class="w3-table w3-table-all">
-            <tr>
-                <th class="w3-text-grey">Name</th>
-                <th class="w3-text-grey">Score</th>
-                <th class="w3-text-grey">Rank</th>
-                <th class="w3-text-grey">Game Count</th>
-                <th class="w3-text-grey">Win/Loss</th>
-                <th class="w3-text-grey">Total</th>
-                <th class="w3-text-grey">Disciplines</th>
-                <th class="w3-text-grey">Invite/Challenge</th>
-                
-                
-            </tr>
-            <tr th:each="u : ${pingPong}">
-                <td><a th:href="@{/manage/user(userId=${u.fullName})}"  th:text="${u.fullName}" ></a></td>
-                <td> <p th:text="${u.score}"></p> </td>
-                <td> <p th:text="${u.rank}"></p> </td>
-                <td> <p th:text="${u.gameCount}"></p> </td>
-                <td> <p th:text="${u.winLoss}"></p> </td>
-                <td> <p th:text="${u.totalGames}"></p> </td>
-                <td> <p th:text="${u.disciplines}"></p> </td>
-                <td><button>Challenge</button></td>
-            </tr>
-            </table>
+
+        <div layout:fragment="content">
+            <div class="t2-margin-top s s12 m4 l3">
+                <table class="w3-table w3-table-all">
+                    <tr>
+                        <th class="w3-text-grey">Name</th>
+                        <th class="w3-text-grey">Score</th>
+                        <th class="w3-text-grey">Rank</th>
+                        <th class="w3-text-grey">Game Count</th>
+                        <th class="w3-text-grey">Win/Loss</th>
+                        <th class="w3-text-grey">Total</th>
+                        <th class="w3-text-grey">Disciplines</th>
+                        <th class="w3-text-grey">Invite/Challenge</th>
+
+
+                    </tr>
+                    <tr th:each="u : ${pingPong}">
+                        <td><a th:href="@{/manage/user(userId=${u.fullName})}"  th:text="${u.fullName}" ></a></td>
+                        <td> <p th:text="${u.score}"></p> </td>
+                        <td> <p th:text="${u.rank}"></p> </td>
+                        <td> <p th:text="${u.gameCount}"></p> </td>
+                        <td> <p th:text="${u.winLoss}"></p> </td>
+                        <td> <p th:text="${u.totalGames}"></p> </td>
+                        <td> <p th:text="${u.disciplines}"></p> </td>
+                        <td><button>Challenge</button></td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </body>
 </html>

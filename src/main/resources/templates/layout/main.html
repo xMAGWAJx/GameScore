@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+    <head>
+        <title>GameScore</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="//www.w3schools.com/w3css/4/w3.css"/> 
+        <link rel="stylesheet" href="/assets/css/styles.css"/>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link href="//fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+        <link href="//fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
+    </head>
+    <body class="w3-container">
+        <div th:replace="layout/header"></div>
+        <div class="t2-page-content">
+            <div layout:fragment="content"></div>
+        </div>
+        
+        <div>
+            <div th:replace="layout/footer"></div>
+        </div>
+        
+    </body>
+</html>
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+    <head>
+        <title>Layout</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+        <style>
+            body {
+                padding-top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Common Navigation Bar</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <h1 layout:fragment="header">This is a layout header11111</h1>
+
+            <div layout:fragment="content">A placeholder for real content.</div>
+        </div>
+    </body>
+</html>

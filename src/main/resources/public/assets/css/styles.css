@@ -1,0 +1,37 @@
+
+*{
+    box-sizing: border-box;
+}
+.logo {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-weight: bold;
+}
+
+.shadow {
+    box-shadow: 0px 5px 5px #a6a6a6;
+}
+
+.navbar-font {
+    font-family: 'Raleway', sans-serif;
+}
+.t2-margin-top.s{
+    margin-top:5px;
+}
+.t2-margin-top.m{
+    margin-top:10px;
+}
+.t2-margin-top.l{
+    margin-top:15px;
+}
+.t2-footer {
+    position: fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    color: white;
+
+    text-align: center;
+}
+.t2-page-content{
+    min-height: 100%;
+}
