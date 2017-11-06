@@ -5,13 +5,13 @@ insert into role (id, role_name) values (2, 'user');
 
 -- Disciplins
 
-insert into activities (id, activity) values (1, 'Ping pong');
-insert into activities (id, activity) values (2, 'Novus');
-insert into activities (id, activity) values (3, 'Football');
-insert into activities (id, activity) values (4, 'Pull up bar');
-insert into activities (id, activity) values (5, 'Press bar');
-insert into activities (id, activity) values (6, 'Darts');
-insert into activities (id, activity) values (7, 'Computer games');
+insert into activity (id, name) values (1, 'Ping pong');
+insert into activity (id, name) values (2, 'Novus');
+insert into activity (id, name) values (3, 'Football');
+insert into activity (id, name) values (4, 'Pull up bar');
+insert into activity (id, name) values (5, 'Press bar');
+insert into activity (id, name) values (6, 'Darts');
+insert into activity (id, name) values (7, 'Computer games');
 
 -- Results/Game outcome
 
@@ -37,7 +37,7 @@ insert into user_role(user_id, role_id) values (2,2);
 insert into user_activities (id, user_id, activity_id) values (2, 2, 1);
 insert into user_outcome (id, user_id, activity_id, outcome_id, results_approved, approver_id, approval_date) values (2, 2, 1, 2, false, null, null);
 
-insert into user (id, full_name, email, password) values (3, 'Maxim Kreslins', 'maxims.kreslins@tele2.com', 'admin');
+insert into user (id, full_name, email, password) values (3, 'Maksim Kreslins', 'maksims.kreslins@tele2.com', 'admin');
 insert into user_role(user_id, role_id) values (3,1);
 insert into user_activities (id, user_id, activity_id) values (3, 3, 7);
 insert into user_outcome (id, user_id, activity_id, outcome_id, results_approved, approver_id, approval_date) values (3, 3, 7, 3, false, null, null);
