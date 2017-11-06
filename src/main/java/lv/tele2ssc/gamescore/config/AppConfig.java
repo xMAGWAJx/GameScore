@@ -33,7 +33,9 @@ public class AppConfig extends WebMvcConfigurerAdapter {
        registry.addViewController("/novus").setViewName("novus");
        registry.addViewController("/football").setViewName("football");
        registry.addViewController("/pull-bar").setViewName("pull-bar");
-        
+       registry.addViewController("/press-bar").setViewName("press-bar");
+       registry.addViewController("/darts").setViewName("darts");
+       registry.addViewController("/computer").setViewName("computer");
     }
 
     @Bean

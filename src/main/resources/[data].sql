@@ -15,9 +15,9 @@ insert into activity (id, name) values (7, 'Computer games');
 
 -- Results/Game outcome
 
-insert into outcome (id, outcome) values (1, 'Win');
-insert into outcome (id, outcome) values (2, 'Lose');
-insert into outcome (id, outcome) values (3, 'Draw'); 
+--insert into outcome (id, outcome_val) values (1, 'Win');
+--insert into outcome (id, outcome_val) values (2, 'Lose');
+--insert into outcome (id, outcome_val) values (3, 'Draw'); 
 
 -- Challenge accept/decline
 

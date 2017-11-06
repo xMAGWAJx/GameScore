@@ -20,7 +20,7 @@ public class Activity implements Serializable {
     
     @Column(name = "name")
     private String name;
-
+    
     public Long getId() {
         return id;
     }

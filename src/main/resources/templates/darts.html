@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main}">
     <head>
-        <title>Football</title>
+        <title>Darts</title>
 
     </head>
     <body>
@@ -13,8 +13,8 @@
                         <th class="w3-text-grey">Name</th>
                         <th class="w3-text-grey">Score</th>
                         <th class="w3-text-grey">Rank</th>
-                        <th class="w3-text-grey">Game Count</th>
-                        <th class="w3-text-grey">Win/Loss</th>                
+                        <th class="w3-text-grey">Attempt Count</th> 
+                        <th class="w3-text-grey">Latest Result</th>
                         <th class="w3-text-grey">Invite/Challenge</th>
 
 
@@ -24,7 +24,7 @@
                         <td> <p th:text="${u.score}"></p> </td>
                         <td> <p th:text="${u.rank}"></p> </td>
                         <td> <p th:text="${u.gameCount}"></p> </td>
-                        <td> <p th:text="${u.winLoss}"></p> </td>
+                        <td> <p th:text="${u.latestCount}"></p> </td>
                         <td><button>Challenge</button></td>
                     </tr>
                 </table>
