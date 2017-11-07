@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -16,7 +17,7 @@ public class Activity implements Serializable {
      * id of the entity
      */
     @Id // required to mark a field as primary key
-    @GeneratedValue // primary key is autoincrement
+    @GeneratedValue(strategy = GenerationType.AUTO) // primary key is autoincrement
     @Column(name = "id") // column in the table should have specified name
     private Long id;
     
@@ -29,7 +30,7 @@ public class Activity implements Serializable {
     @Column(name = "rules")
     private String rules;
     
-    @OneToMany(mappedBy = "game")
+    @OneToMany(mappedBy = "activity")
     private Set<Game> games;
 
     public Set<Game> getGames() {

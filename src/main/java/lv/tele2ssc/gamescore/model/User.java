@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -24,7 +24,7 @@ public class User implements Serializable {
      * id of the entity
      */
     @Id // required to mark a field as primary key
-    @GeneratedValue // primary key is autoincrement
+    @GeneratedValue(strategy = GenerationType.AUTO) // primary key is autoincrement
     @Column(name = "id") // column in the table should have specified name
     private Long id;
     
