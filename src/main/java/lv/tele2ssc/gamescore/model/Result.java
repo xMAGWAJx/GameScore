@@ -23,7 +23,7 @@ public class Result implements Serializable {
     @Column(name = "id") // column in the table should have specified name
     private Long id;
     
-    @Column(name = "createdDate")
+    @Column(name = "created_Date")
     private Timestamp createdDate;
     
     @ManyToOne(fetch = FetchType.LAZY)

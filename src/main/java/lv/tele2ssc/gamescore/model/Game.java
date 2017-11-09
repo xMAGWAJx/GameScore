@@ -25,7 +25,7 @@ public class Game implements Serializable {
     @Column(name = "id") // column in the table should have specified name
     private Long id;
     
-    @Column(name = "createdDate")
+    @Column(name = "created_Date")
     private Timestamp createdDate;
     
     @Column(name = "place")

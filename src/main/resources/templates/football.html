@@ -10,7 +10,7 @@
             <div class="t2-margin-top s s12 m4 l3">
                 <table class="w3-table w3-table-all">
                     <tr>
-                        <th class="w3-text-grey">Name</th>
+                        <th class="w3-text-grey">Team Name</th>
                         <th class="w3-text-grey">Score</th>
                         <th class="w3-text-grey">Rank</th>
                         <th class="w3-text-grey">Game Count</th>
@@ -19,12 +19,13 @@
 
 
                     </tr>
-                    <tr th:each="u : ${all}">
-                        <td><a th:href="@{/manage/user(userId=${u.fullName})}"  th:text="${u.fullName}" ></a></td>
-                        <td> <p th:text="${u.score}"></p> </td>
-                        <td> <p th:text="${u.rank}"></p> </td>
-                        <td> <p th:text="${u.gameCount}"></p> </td>
-                        <td> <p th:text="${u.winLoss}"></p> </td>
+                    <tr th:each="u : ${games}">
+                        <!--<td><a th:href="@{/manage/user(userId=${u.fullName})}"  th:text="${u.fullName}" ></a></td>-->
+                        <td> <p th:text="${u.state}"></p> </td>
+                        <td> <p th:text="${u.state}"></p> </td>
+                        <td> <p th:text="${u.place}"></p> </td>
+                        <td> <p th:text="${u.state}"></p> </td>
+                        <td> <p th:text="${u.state}"></p> </td>
                         <td><button>Challenge</button></td>
                     </tr>
                 </table>
