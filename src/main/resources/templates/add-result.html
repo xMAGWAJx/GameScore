@@ -8,26 +8,41 @@
 
         <div layout:fragment="content">
             <div class="w3-row w3-margin">
-<!--                <form th:action="@{/add-result}" method="POST" class="w3-display-container w3-centered" th:object="${user}">
-                    <div class=" w3-col m4 s12 w3-display-topmiddle">
-                        <div class="w3-panel">                           
-
-                            <label>Game name</label>
-                            <input class="w3-input w3-bordered" th:classappend="${#fields.hasErrors('activity')}? t2-box-mandatory" type="text" th:field="*{activity}"/>
-
-
-                            <label>Result</label>
-                            <input class="w3-input w3-bordered" th:classappend="${#fields.hasErrors('result')}? t2-box-mandatory" type="text" th:field="*{result}"/>
-
-                            <div th:if="${#fields.hasErrors()}">* - Please fill all fields marked in red</div>
-                            <form:errors/>
-
-                        </div>
-                        <div class="w3-panel">
-                            <button class="w3-col m12 w3-button w3-green" type="submit">Register result</button>
-                        </div>
-                    </div>
-                </form>-->
+                <div class="w3-card-4">
+                  <div class="w3-container w3-dark-grey">
+                    <h2>Add your result</h2>
+                  </div>
+                  <form class="w3-container w3-light-grey" autocomplete="off" >
+                    <p>      
+                    <div class="dropdown">
+                        <input class="form-control" id="ddInput" type="text" placeholder="Discipline" data-toggle="dropdown"></input>
+                        <ul class="dropdown-menu">
+                            <li th:each="activity:${activities}"><a href="" th:text="${activity.name}"></a></li>
+<!--                          <li><a href="">Novus</a></li>
+                          <li><a href="">Football</a></li>
+                          <li><a href="">Pull up bar</a></li>
+                          <li><a href="">Press bar</a></li>
+                          <li><a href="">Darts</a></li>
+                          <li><a href="">Computer games</a></li>-->
+                        </ul>
+                      </div>
+                      <script>
+                        $(document).ready(function(){
+                          $("#ddInput").on("keyup", function() {
+                            var value = $(this).val().toLowerCase();
+                            $(".dropdown-menu li").filter(function() {
+                              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                            });
+                          });
+                        });
+                        </script>
+                    </p>
+                    <p>      
+                    <input class="w3-input w3-border" name="last" type="text"></p>
+                    <p><button class="w3-btn w3-red">Save</button>
+                    <button class="w3-btn w3-dark-grey">Cancel</button></p>
+                  </form>
+                </div>
             </div>
              <script src="/assets/js/registration.js" type="text/javascript"></script>
         </div>
