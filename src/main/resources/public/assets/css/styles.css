@@ -6,13 +6,15 @@
     font-family: 'Gloria Hallelujah', cursive;
     font-weight: bold;
 }
-
 .shadow {
     box-shadow: 0px 5px 5px #a6a6a6;
 }
-
 .navbar-font {
     font-family: 'Raleway', sans-serif;
+}
+.footer-font {
+    font-family: 'Raleway', sans-serif;
+    font-size: 5px;
 }
 .t2-margin-top.s{
     margin-top:5px;
