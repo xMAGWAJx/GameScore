@@ -17,4 +17,7 @@ public interface ResultRepository extends CrudRepository<Result, Long> {
     //List<Result> findByGame_id(String game_id);
     @Override
     List<Result> findAll();
+    
+    
+    
 }

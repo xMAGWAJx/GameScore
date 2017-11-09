@@ -7,7 +7,11 @@ package lv.tele2ssc.gamescore.controllers;
 
 import java.util.List;
 import java.util.ArrayList;
+import javax.validation.Valid;
 import lv.tele2ssc.gamescore.model.Activity;
+import lv.tele2ssc.gamescore.model.Result;
+import lv.tele2ssc.gamescore.services.ResultService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class ResultController {
+    @Autowired
+    private ResultService resultService;
     
     @RequestMapping("/novus")
     public String page(Model model) {
@@ -25,6 +31,14 @@ public class ResultController {
         
         model.addAttribute("attribute", "value");
         return "novus";
+    }
+    
+    @RequestMapping("/add-result")
+    public String addResult(@Valid Result result,Model model) {
+        
+        
+       // resultService.addNewResult(result);
+        return "add-result";
     }
     
 }
