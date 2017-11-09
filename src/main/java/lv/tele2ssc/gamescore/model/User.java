@@ -41,8 +41,10 @@ public class User implements Serializable {
     @Length(min = 5)
     private String password;
     
-    @Transient // this field will not be mapped to database (but will be used in controller)
-    private String password2;
+    @Transient
+    @Length(min = 5)
+    private String passwordConfirm;
+    
     
     @ManyToMany // many-to-many relationship
     @JoinTable(name="user_role", // middle table's name  
@@ -88,13 +90,7 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getPassword2() {
-        return password2;
-    }
-
-    public void setPassword2(String password2) {
-        this.password2 = password2;
-    }
+   
 
     public Set<Role> getRoles() {
         return roles;
@@ -111,6 +107,14 @@ public class User implements Serializable {
     public void setActivities(Set<Activity> activities) {
         this.activities = activities;
     }
-    
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
+
 }
 

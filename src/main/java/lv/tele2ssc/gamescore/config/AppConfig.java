@@ -38,9 +38,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
        registry.addViewController("/computer").setViewName("computer");
     }
 
-    @Bean
-    public LayoutDialect layoutDialect() {
-        return new LayoutDialect();
-    }
+    
 
 }

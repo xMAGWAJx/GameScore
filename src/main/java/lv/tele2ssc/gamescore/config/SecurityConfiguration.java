@@ -16,6 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 /**
  *
  * @author vitasava
@@ -31,15 +32,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        /*
+       
         auth.jdbcAuthentication()
                 .usersByUsernameQuery("select email, password, 1 from user where email=?")
-                .authoritiesByUsernameQuery("select u.email,r.name from user u, user_role r,user_role_permission urp "
-                        + "where u.id=urp.user_id and r.id=urp.user_role_id and u.email=?")
+                .authoritiesByUsernameQuery("select u.email,r.role_name from user u, role r,user_role urp "
+                        + "where u.id=urp.user_id and r.id=urp.role_id and u.email=?")
                 .dataSource(dataSource)
                 .passwordEncoder(NoOpPasswordEncoder.getInstance());
         //.passwordEncoder(passwordEncoder);
-*/
+
 
 //To change body of generated methods, choose Tools | Templates.
     }
@@ -57,10 +58,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().cors()
                 .and().csrf().disable().formLogin().loginPage("/login").usernameParameter("username").passwordParameter("password")
                 .and().headers().frameOptions().disable();
-
+       
     }
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){        
     	return new BCryptPasswordEncoder();
     }
+   
 }

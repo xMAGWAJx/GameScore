@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main}">
+    <head>
+        <title>New user registration</title>
+        
+    </head>
+    <body>
+
+        <div layout:fragment="content">
+            <div class="w3-row w3-margin">
+                <form th:action="@{/register}" method="POST" class="w3-display-container w3-centered" th:object="${user}">
+                    <div class=" w3-col m4 s12 w3-display-topmiddle">
+                        <div class="w3-panel">                           
+
+                            <label>Full name</label>
+                            <input class="w3-input w3-bordered" th:classappend="${#fields.hasErrors('fullName')}? t2-box-mandatory" type="text" th:field="*{fullName}"/>
+
+
+                            <label>Email</label>
+                            <input class="w3-input w3-bordered" th:classappend="${#fields.hasErrors('email')}? t2-box-mandatory" type="text" th:field="*{email}"/>
+
+                            <label>Password</label>
+                            <input class="w3-input w3-bordered" th:classappend="${#fields.hasErrors('password')}? t2-box-mandatory" type="password" th:field="*{password}"/>
+                            <label>Confirm password</label>
+                            <input class="w3-input w3-bordered" th:classappend="${#fields.hasErrors('passwordConfirm')}? t2-box-mandatory" type="password" th:field="*{passwordConfirm}"/>
+                            <div th:if="${#fields.hasErrors()}">* - Please fill all fields marked in red</div>
+                            <div th:if="${#fields.hasErrors()}"><form:errors path="passwordMismatch"></form:errors>* - Entered passwords does not match</div>
+                            <form:errors/>
+
+                        </div>
+                        <div class="w3-panel">
+                            <button class="w3-col m12 w3-button w3-green" type="submit">Register</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+             <script src="/assets/js/registration.js" type="text/javascript"></script>
+        </div>
+       
+    </body>
+</html>

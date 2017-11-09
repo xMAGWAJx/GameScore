@@ -35,3 +35,6 @@
 .t2-page-content{
     min-height: 100%;
 }
+.t2-box-mandatory{
+    border-color: red;
+}
