@@ -39,7 +39,7 @@ public class Result implements Serializable {
     private String result;
     
     @Column(name = "score")
-    private String score;
+    private Integer score;
 
     public Long getId() {
         return id;
@@ -81,11 +81,11 @@ public class Result implements Serializable {
         this.result = result;
     }
 
-    public String getScore() {
+    public Integer getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(Integer score) {
         this.score = score;
     }
 }
