@@ -14,7 +14,9 @@ import lv.tele2ssc.gamescore.services.ResultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -33,11 +35,18 @@ public class ResultController {
         return "novus";
     }
     
-    @RequestMapping("/add-result")
-    public String addResult(@Valid Result result,Model model) {
+
+    
+    @RequestMapping(path = "/add-result", method = RequestMethod.POST)
+    public String edit(@Valid Result result, BindingResult bindingResult, Model model) {
+        // checks whether edited book has validation errors
+        if (bindingResult.hasErrors()) {
+            return "add-result";
+        }
         
+        resultService.addNewResult(result);
+
         
-       // resultService.addNewResult(result);
         return "add-result";
     }
     

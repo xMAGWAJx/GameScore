@@ -14,4 +14,8 @@ import org.springframework.stereotype.Repository;
 public interface TeamRepository extends CrudRepository<Team, Long> {
     @Query("SELECT t FROM Team t WHERE t.name = ?1")
     Team findByName(String name);
+    @Query("SELECT t FROM Team t WHERE t.user = ?1")
+    Team findByUser(String name);
+    @Query("SELECT t FROM Team t WHERE t.user != ?1")
+    Team findByUserExcept(String name);
 }
