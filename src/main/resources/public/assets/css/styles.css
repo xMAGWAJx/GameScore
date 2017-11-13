@@ -12,10 +12,23 @@
 .navbar-font {
     font-family: 'Raleway', sans-serif;
 }
+.w3-bar a:hover {
+    text-decoration:none;
+}
+
+.w3-dropdown-hover a:hover {
+    text-decoration: none;
+}
+
 .footer-font {
     font-family: 'Raleway', sans-serif;
     font-size: 5px;
 }
+
+.main-font {
+    font-family: 'Raleway', sans-serif;
+}
+
 .t2-margin-top.s{
     margin-top:5px;
 }

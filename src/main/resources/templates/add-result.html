@@ -9,39 +9,59 @@
         <div layout:fragment="content">
             <div class="w3-row w3-margin">
                 <div class="w3-card-4">
-                  <div class="w3-container w3-dark-grey">
-                    <h2>Add your result</h2>
+                  <div class="w3-container w3-dark-grey main-font">
+                    <h4>Add your result</h4>
                   </div>
-                  <form class="w3-container w3-light-grey" autocomplete="off" >
-                    <p>      
-                    <div class="dropdown">
-                        <input class="form-control" id="ddInput" type="text" placeholder="Discipline" data-toggle="dropdown"></input>
-                        <ul class="dropdown-menu">
-                            <li th:each="activity:${activities}"><a href="" th:text="${activity.name}"></a></li>
-<!--                          <li><a href="">Novus</a></li>
-                          <li><a href="">Football</a></li>
-                          <li><a href="">Pull up bar</a></li>
-                          <li><a href="">Press bar</a></li>
-                          <li><a href="">Darts</a></li>
-                          <li><a href="">Computer games</a></li>-->
-                        </ul>
-                      </div>
-                      <script>
-                        $(document).ready(function(){
-                          $("#ddInput").on("keyup", function() {
-                            var value = $(this).val().toLowerCase();
-                            $(".dropdown-menu li").filter(function() {
-                              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                            });
-                          });
-                        });
-                        </script>
-                    </p>
-                    <p>      
-                    <input class="w3-input w3-border" name="last" type="text"></p>
-                    <p><button class="w3-btn w3-red">Save</button>
-                    <button class="w3-btn w3-dark-grey">Cancel</button></p>
-                  </form>
+                    <div class="w3-container w3-light-grey">
+                        <form class=" main-font" autocomplete="off" >
+                            <table>
+                                <tr>
+                                    <td>
+                                        <p>                                         
+                                            <div class="w3-dropdown-hover">
+                                                <input id="ddDiscipline" class="w3-input w3-border w3-round" type="text" placeholder="Discipline"></input>
+                                                <div id="dropdown" class="w3-dropdown-content w3-bar-block w3-border">                                                   
+                                                  <a href="" th:each="activity:${activities}" th:text="${activity.name}" class="w3-bar-item w3-button">Link 1</a>
+                                                  
+                                                </div>
+                                                <script>
+                                                    $(document).ready(function(){
+                                                      $("#ddDiscipline").on("keyup", function() {
+                                                        var value = $(this).val().toLowerCase();
+                                                        $("#dropdown a").filter(function() {
+                                                          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                                        });
+                                                      });
+                                                    });
+                                                </script>
+                                            </div>
+                                        </p>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p><input class="w3-input w3-border w3-round" type="text" placeholder="Date"></p>
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p><input class="w3-input w3-border w3-round" type="text" placeholder="Result"></p>
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                            <p>
+                                <button class="w3-btn w3-red main-font">Save</button>
+                                <button class="w3-btn w3-dark-grey main-font">Cancel</button>
+                            </p>
+                        </form> 
+                    </div>
                 </div>
             </div>
              <script src="/assets/js/registration.js" type="text/javascript"></script>
