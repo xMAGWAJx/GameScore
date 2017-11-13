@@ -29,18 +29,11 @@ public class TeamService {
     public Team findByName(String name){
         return teamRepository.findByName(name); 
     }
-    public Team findByUser(String name){
-        return teamRepository.findByUser(name); 
+    public List<Team> findByUser(User user){
+        return teamRepository.findByUser(user); 
         
     }
-    
-    public Team findByUserExcept(String name){
-        return teamRepository.findByUserExcept(name); 
-        
-    }
-    
-    
-    
+   
     public List<Team> findAll(){
         return (List<Team>)teamRepository.findAll();
     }

@@ -33,8 +33,8 @@ public class Team implements Serializable {
 
     @ManyToMany // many-to-many relationship
     @JoinTable(name="user_team", // middle table's name  
-            joinColumns = @JoinColumn(name = "user_id"), // column in middle table for User id
-            inverseJoinColumns = @JoinColumn(name = "team_id")) // column in middle table for Role id
+            joinColumns = @JoinColumn(name = "team_id"), // column in middle table for User id
+            inverseJoinColumns = @JoinColumn(name = "user_id")) // column in middle table for Role id
     private Set<User> users;
     
     @OneToMany(mappedBy = "team")

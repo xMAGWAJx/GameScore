@@ -21,8 +21,7 @@
                                             <div class="w3-dropdown-hover">
                                                 <input id="ddDiscipline" class="w3-input w3-border w3-round" type="text" placeholder="Discipline"></input>
                                                 <div id="dropdown" class="w3-dropdown-content w3-bar-block w3-border">                                                   
-                                                  <a href="" th:each="activity:${activities}" th:text="${activity.name}" class="w3-bar-item w3-button">Link 1</a>
-                                                  
+                                                  <a href="javascript:void(0)" th:each="activity:${activities}" th:text="${activity.name}" class="w3-bar-item w3-button dropdown-activity">Link 1</a>                                                 
                                                 </div>
                                                 <script>
                                                     $(document).ready(function(){
@@ -32,16 +31,47 @@
                                                           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                                                         });
                                                       });
+                                                      $(".dropdown-activity").on("click", function() {
+                                                          $("#ddDiscipline").val($(this).text());
+                                                      });
                                                     });
                                                 </script>
                                             </div>
                                         </p>
                                     </td>
-                                    <td></td>
+                                    <td><input class="w3-input w3-border w3-round" type="text" placeholder="Date"></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p><input class="w3-input w3-border w3-round" type="text" placeholder="Date"></p>
+                                        <p>
+                                            <div class="w3-dropdown-hover">
+                                                <input id="ddTeam" class="w3-input w3-border w3-round" type="text" placeholder="Your team"></input>
+                                                <div id="dropdown" class="w3-dropdown-content w3-bar-block w3-border">                                                   
+                                                  <a href="javascript:void(0)" th:each="team:${userTeams}" th:text="${team.name}" class="w3-bar-item w3-button dropdown-team">Link 1</a>                                                 
+                                                </div>
+                                                <script>
+                                                    $(document).ready(function(){
+                                                      $("#ddTeam").on("keyup", function() {
+                                                        var value = $(this).val().toLowerCase();
+                                                        $("#dropdown a").filter(function() {
+                                                          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                                        });
+                                                      });
+                                                      $(".dropdown-team").on("click", function() {
+                                                          $("#ddTeam").val($(this).text());
+                                                      });
+                                                    });
+                                                </script>
+                                            </div>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p><input class="w3-input w3-border w3-round" type="text" placeholder="Team"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        
                                     </td>
                                     <td>
                                         
@@ -51,9 +81,7 @@
                                     <td>
                                         <p><input class="w3-input w3-border w3-round" type="text" placeholder="Result"></p>
                                     </td>
-                                    <td>
-                                        
-                                    </td>
+                                    <td></td>
                                 </tr>
                             </table>
                             <p>

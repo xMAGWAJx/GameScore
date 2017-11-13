@@ -1,6 +1,8 @@
 package lv.tele2ssc.gamescore.repositories;
 
+import java.util.List;
 import lv.tele2ssc.gamescore.model.Team;
+import lv.tele2ssc.gamescore.model.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -14,8 +16,6 @@ import org.springframework.stereotype.Repository;
 public interface TeamRepository extends CrudRepository<Team, Long> {
     @Query("SELECT t FROM Team t WHERE t.name = ?1")
     Team findByName(String name);
-    @Query("SELECT t FROM Team t WHERE t.user = ?1")
-    Team findByUser(String name);
-    @Query("SELECT t FROM Team t WHERE t.user != ?1")
-    Team findByUserExcept(String name);
+    @Query("SELECT t FROM Team t WHERE ?1 member of t.users")
+    List<Team> findByUser(User user);
 }
