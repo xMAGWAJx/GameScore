@@ -18,6 +18,9 @@ public interface ResultRepository extends CrudRepository<Result, Long> {
     @Override
     List<Result> findAll();
     
-    
+    @Query("SELECT r FROM Result r "
+            + " WHERE LOWER(r.game.activity.name) = ?1"
+            + " ORDER BY r.team.name ASC")
+    List<Result> findByActivity(String activity);
     
 }

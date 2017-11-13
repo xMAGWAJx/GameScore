@@ -101,9 +101,16 @@ insert into user_team (user_id, team_id) values (5, 3);
 --Register a game (Football)
 insert into game (id, activity_id, state) values (1, 3, 'COMPLETED');
 --Result for team Tele2
-insert into result (created_Date, game_id, team_id, result) values (current_timestamp, 1, 1, 6);
+insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 1, 1, 6, 'Lose');
 --Result for team Lets play
-insert into result (created_Date, game_id, team_id, result) values (current_timestamp, 1, 3, 10);
+insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 1, 3, 10, 'Win');
+
+--Register a game (Football)
+insert into game (id, activity_id, state) values (2, 3, 'COMPLETED');
+--Result for team Tele2
+insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 2, 1, 9, 'Lose');
+--Result for team Lets play
+insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 2, 3, 10, 'Win');
 
 
 -- Result 
