@@ -37,5 +37,9 @@ public class TeamService {
     public List<Team> findAll(){
         return (List<Team>)teamRepository.findAll();
     }
+
+    public Team findById(Long team1Id) {
+        return teamRepository.findOne(team1Id);
+    }
     
 }

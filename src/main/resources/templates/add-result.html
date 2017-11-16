@@ -13,15 +13,16 @@
                     <h4>Add your result</h4>
                   </div>
                     <div class="w3-container w3-light-grey">
-                        <form class=" main-font" autocomplete="off" >
+                        <form class="main-font" autocomplete="off" th:object="${result}" th:action="@{/add-result}" method="post">
                             <table>
                                 <tr>
                                     <td>
                                         <p></p>                                      
                                             <div class="w3-dropdown-hover">
-                                                <input id="ddDiscipline" class="w3-input w3-border w3-round" type="text" placeholder="Discipline" ></input>
+                                                <input id="ddDisciplineId" type="hidden" th:field="*{activityId}"></input>
+                                                <input id="ddDiscipline" class="w3-input w3-border w3-round" type="text" placeholder="Discipline"></input>
                                                 <div id="dropdown" class="w3-dropdown-content w3-bar-block w3-border">                                                   
-                                                  <a href="javascript:void(0)" th:each="activity:${activities}" th:text="${activity.name}" class="w3-bar-item w3-button dropdown-activity">Link 1</a>                                                 
+                                                  <a href="javascript:void(0)" th:attr="data-single=${activity.single}, data-activityid=${activity.id}" th:each="activity:${activities}" th:text="${activity.name}" class="w3-bar-item w3-button dropdown-activity">Link 1</a>                                                 
                                                 </div>
                                                 <script>
                                                     $(document).ready(function(){
@@ -33,6 +34,14 @@
                                                       });
                                                       $(".dropdown-activity").on("click", function() {
                                                           $("#ddDiscipline").val($(this).text());
+                                                          var single = $(this).data("single");
+                                                          if (single === 1) {
+                                                              $("#second-team").hide();
+                                                          } else {
+                                                              $("#second-team").show();
+                                                          }
+                                                          var ddDisciplineId = $(this).data("activityid");
+                                                            $("#ddDisciplineId").val(ddDisciplineId);
                                                       });
                                                     });
                                                 </script>
@@ -41,27 +50,30 @@
                                     </td>
                                     <td>
                                         <p></p>
-                                            <input class="w3-input w3-border w3-round" type="text" placeholder="Date">
+                                            <input class="w3-input w3-border w3-round" type="text" placeholder="Date" th:field="*{date}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <p></p>                                     
                                             <div class="w3-dropdown-hover">
+                                                <input id="ddTeam1Id" type="hidden" th:field="*{team1Id}"></input>
                                                 <input id="ddTeam" class="w3-input w3-border w3-round" type="text" placeholder="Your team"></input>
                                                 <div id="dropdown" class="w3-dropdown-content w3-bar-block w3-border">                                                   
-                                                  <a href="javascript:void(0)" th:each="userTeam:${userTeams}" th:text="${userTeam.name}" class="w3-bar-item w3-button dropdown-team">Link 1</a>                                                 
+                                                  <a href="javascript:void(0)" th:attr="data-team1id=${userTeam.id}" th:each="userTeam:${userTeams}" th:text="${userTeam.name}" class="w3-bar-item w3-button dropdown-team">Link 1</a>                                                 
                                                 </div>
                                                 <script>
                                                     $(document).ready(function(){
                                                       $("#ddTeam").on("keyup", function() {
                                                         var value = $(this).val().toLowerCase();
                                                         $("#dropdown a").filter(function() {
-                                                          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                                                         });
                                                       });
                                                       $(".dropdown-team").on("click", function() {
-                                                          $("#ddTeam").val($(this).text());
+                                                            $("#ddTeam").val($(this).text());
+                                                            var ddTeam1Id = $(this).data("team1id");
+                                                            $("#ddTeam1Id").val(ddTeam1Id);
                                                       });
                                                     });
                                                 </script>
@@ -69,11 +81,17 @@
                                         
                                     </td>
                                     <td>
+                                        <p></p><input class="w3-input w3-border w3-round" type="text" placeholder="Score" th:field="*{teamScore1Id}">                                        
+                                    </td>
+                                </tr>
+                                <tr id="second-team">
+                                    <td>
                                         <p></p>                                     
                                             <div class="w3-dropdown-hover">
+                                                <input id="ddTeam2Id" type="hidden" th:field="*{team2Id}"></input>
                                                 <input id="ddTeams" class="w3-input w3-border w3-round" type="text" placeholder="Team"></input>
                                                 <div id="dropdown" class="w3-dropdown-content w3-bar-block w3-border">                                                   
-                                                  <a href="javascript:void(0)" th:each="team:${teams}" th:text="${team.name}" class="w3-bar-item w3-button dropdown-teams">Link 1</a>                                                 
+                                                  <a href="javascript:void(0)" th:attr="data-team2id=${team.id}" th:each="team:${teams}" th:text="${team.name}" class="w3-bar-item w3-button dropdown-teams">Link 1</a>                                                 
                                                 </div>
                                                 <script>
                                                     $(document).ready(function(){
@@ -85,24 +103,20 @@
                                                       });
                                                       $(".dropdown-teams").on("click", function() {
                                                           $("#ddTeams").val($(this).text());
+                                                          var ddTeam1Id = $(this).data("team2id");
+                                                         $("#ddTeam2Id").val(ddTeam1Id);
                                                       });
                                                     });
                                                 </script>
                                             </div>
                                     </td>
-                                </tr>
-                                <tr>
                                     <td>
-                                        
-                                    </td>
-                                    <td>
-                                        
+                                        <p></p><input class="w3-input w3-border w3-round" type="text" placeholder="Score" th:field="*{teamScore2Id}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p></p><input class="w3-input w3-border w3-round" type="text" placeholder="Result">
-                                            <p></p>
+                                        
                                     </td>
                                     <td>
                                         

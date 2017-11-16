@@ -27,4 +27,9 @@ public class ActivityService {
     public List<Activity> findAll(){
         return (List<Activity>)activityRepository.findAll();
     }
+
+    public Activity findById(Long activityId) {
+        return activityRepository.findOne(activityId);
+                
+    }
 }

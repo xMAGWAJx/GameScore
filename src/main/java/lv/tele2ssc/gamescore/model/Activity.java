@@ -30,6 +30,9 @@ public class Activity implements Serializable {
     @Column(name = "rules")
     private String rules;
     
+    @Column(name = "single")
+    private int single;
+    
     @OneToMany(mappedBy = "activity")
     private Set<Game> games;
 
@@ -72,4 +75,14 @@ public class Activity implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public int getSingle() {
+        return single;
+    }
+
+    public void setSingle(int single) {
+        this.single = single;
+    }
+    
+    
 }
