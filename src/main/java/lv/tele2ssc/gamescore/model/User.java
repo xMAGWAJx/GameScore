@@ -57,7 +57,7 @@ public class User implements Serializable {
             joinColumns = @JoinColumn(name = "user_id"), // column in middle table for User id
             inverseJoinColumns = @JoinColumn(name = "activity_id")) // column in middle table for Role id
     private Set<Activity> activities;
-
+    
     public Long getId() {
         return id;
     }

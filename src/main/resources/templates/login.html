@@ -7,8 +7,9 @@
     <body>
 
         <div layout:fragment="content">
+            
             <div class="w3-row w3-margin w3-centered">
-                <div class="w3-display-container" sec:authorize="isAuthenticated()">
+                <div class="w3-display-container" sec:authorize="isAuthenticated()">                   
                     <div class="w3-panel w3-col m6 s12  w3-display-topmiddle" >
                         <div class="w3-panel  w3-center">
                             You're currently logged in as <span th:text="${#authentication.name}"></span>                   
