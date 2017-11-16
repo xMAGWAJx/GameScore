@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main}">
     <head>
         <title>New user registration</title>
-        
+
     </head>
     <body>
 
@@ -14,18 +14,24 @@
 
                             <label>Full name</label>
                             <input class="w3-input w3-bordered" th:classappend="${#fields.hasErrors('fullName')}? t2-box-mandatory" type="text" th:field="*{fullName}"/>
-
+                            <div class="alert alert-danger" th:if="${#fields.hasErrors('fullName')}">
+                                <p th:errors="*{fullName}"></p>    
+                            </div> 
 
                             <label>Email</label>
                             <input class="w3-input w3-bordered" th:classappend="${#fields.hasErrors('email')}? t2-box-mandatory" type="text" th:field="*{email}"/>
+                            <div class="alert alert-danger" th:if="${#fields.hasErrors('email')}">
+                                <p th:errors="*{email}"></p>    
+                            </div> 
 
                             <label>Password</label>
                             <input class="w3-input w3-bordered" th:classappend="${#fields.hasErrors('password')}? t2-box-mandatory" type="password" th:field="*{password}"/>
+                            <div class="alert alert-danger" th:if="${#fields.hasErrors('password')}">
+                                <p th:errors="*{password}"></p>    
+                            </div> 
                             <label>Confirm password</label>
                             <input class="w3-input w3-bordered" th:classappend="${#fields.hasErrors('passwordConfirm')}? t2-box-mandatory" type="password" th:field="*{passwordConfirm}"/>
-                            <div th:if="${#fields.hasErrors()}">* - Please fill all fields marked in red</div>
-                            <div th:if="${#fields.hasErrors()}"><form:errors path="passwordMismatch"></form:errors>* - Entered passwords does not match</div>
-                            <form:errors/>
+                            <div th:if="${#fields.hasErrors()}">* - Please correct errors and submit again</div>
 
                         </div>
                         <div class="w3-panel">
@@ -34,8 +40,8 @@
                     </div>
                 </form>
             </div>
-             <script src="/assets/js/registration.js" type="text/javascript"></script>
+            <script src="/assets/js/registration.js" type="text/javascript"></script>
         </div>
-       
+
     </body>
 </html>

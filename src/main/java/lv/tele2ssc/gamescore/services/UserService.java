@@ -7,6 +7,7 @@ package lv.tele2ssc.gamescore.services;
 
 import java.util.List;
 import lv.tele2ssc.gamescore.model.User;
+import lv.tele2ssc.gamescore.repositories.RoleRepository;
 import lv.tele2ssc.gamescore.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,9 @@ import org.springframework.stereotype.Service;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+    
+     @Autowired
+    private RoleRepository roleRepository;
     
     public User findByEmail(String email){
         return userRepository.findByEmail(email); 
