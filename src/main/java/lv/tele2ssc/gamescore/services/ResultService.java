@@ -33,4 +33,8 @@ public class ResultService {
         
         return true;
     }
+
+    public void save(Result r1) {
+        resultRepository.save(r1);
+    }
 }

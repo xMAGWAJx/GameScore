@@ -19,15 +19,15 @@ CREATE TABLE `user_team` (
 insert into role (id, role_name) values (1, 'admin');
 insert into role (id, role_name) values (2, 'user');
 
--- Disciplins
+-- Disciplines
 
-insert into activity (id, name) values (1, 'Ping pong');
-insert into activity (id, name) values (2, 'Novus');
-insert into activity (id, name) values (3, 'Football');
-insert into activity (id, name) values (4, 'Pull up bar');
-insert into activity (id, name) values (5, 'Press bar');
-insert into activity (id, name) values (6, 'Darts');
-insert into activity (id, name) values (7, 'Computer games');
+insert into activity (id, name, single) values (1, 'Ping pong', 0);
+insert into activity (id, name, single) values (2, 'Novus', 0);
+insert into activity (id, name, single) values (3, 'Football', 0);
+insert into activity (id, name, single) values (4, 'Pull up bar', 1);
+insert into activity (id, name, single) values (5, 'Press bar', 1);
+insert into activity (id, name, single) values (6, 'Darts', 0);
+insert into activity (id, name, single) values (7, 'Computer games', 0);
 
 -- Users
 

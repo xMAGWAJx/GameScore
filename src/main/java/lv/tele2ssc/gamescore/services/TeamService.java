@@ -35,9 +35,9 @@ public class TeamService {
     public List<Team> findAll(){
         return (List<Team>)teamRepository.findAll();
     }
-//    public Boolean addUserToTeam(User user, Team team){
-//        Integer rowCount = teamRepository.addUserToTeam(user, team);
-//        
-//        return (rowCount > 0) ? true : false;
-//    }
+
+    public Team findById(Long team1Id) {
+        return teamRepository.findOne(team1Id);
+    }
+    
 }
