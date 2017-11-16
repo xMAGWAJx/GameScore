@@ -53,10 +53,10 @@ public class User implements Serializable {
     private Set<Role> roles;
     
     @ManyToMany // many-to-many relationship
-    @JoinTable(name="user_activities", // middle table's name  
+    @JoinTable(name="user_team", // middle table's name  
             joinColumns = @JoinColumn(name = "user_id"), // column in middle table for User id
-            inverseJoinColumns = @JoinColumn(name = "activity_id")) // column in middle table for Role id
-    private Set<Activity> activities;
+            inverseJoinColumns = @JoinColumn(name = "team_id")) // column in middle table for Role id
+    private Set<Team> teams;
     
     public Long getId() {
         return id;
@@ -100,12 +100,12 @@ public class User implements Serializable {
         this.roles = roles;
     }
     
-    public Set<Activity> getActivities() {
-        return activities;
+    public Set<Team> getTeams() {
+        return teams;
     }
 
-    public void setActivities(Set<Activity> activities) {
-        this.activities = activities;
+    public void setTeam(Team team) {
+        this.teams.add(team);
     }
 
     public String getPasswordConfirm() {

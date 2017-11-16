@@ -5,12 +5,14 @@ import java.sql.Timestamp;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -28,7 +30,7 @@ public class Team implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "createdDate")
+    @Column(name = "created_date")
     private Timestamp createdDate;
 
     @ManyToMany // many-to-many relationship
@@ -36,6 +38,18 @@ public class Team implements Serializable {
             joinColumns = @JoinColumn(name = "team_id"), // column in middle table for User id
             inverseJoinColumns = @JoinColumn(name = "user_id")) // column in middle table for Role id
     private Set<User> users;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_admin_id")
+    private User teamAdmin;
+
+    public User getTeamAdmin() {
+        return teamAdmin;
+    }
+
+    public void setTeamAdmin(User teamAdmin) {
+        this.teamAdmin = teamAdmin;
+    }
     
     @OneToMany(mappedBy = "team")
     private Set<Result> results;

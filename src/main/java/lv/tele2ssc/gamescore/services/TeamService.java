@@ -30,12 +30,14 @@ public class TeamService {
         return teamRepository.findByName(name); 
     }
     public List<Team> findByUser(User user){
-        return teamRepository.findByUser(user); 
-        
+        return teamRepository.findByUser(user);   
     }
-   
     public List<Team> findAll(){
         return (List<Team>)teamRepository.findAll();
     }
-    
+//    public Boolean addUserToTeam(User user, Team team){
+//        Integer rowCount = teamRepository.addUserToTeam(user, team);
+//        
+//        return (rowCount > 0) ? true : false;
+//    }
 }

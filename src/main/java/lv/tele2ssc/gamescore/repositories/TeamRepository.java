@@ -16,6 +16,13 @@ import org.springframework.stereotype.Repository;
 public interface TeamRepository extends CrudRepository<Team, Long> {
     @Query("SELECT t FROM Team t WHERE t.name = ?1")
     Team findByName(String name);
+    
     @Query("SELECT t FROM Team t WHERE ?1 member of t.users")
     List<Team> findByUser(User user);
+    
+    @Query("SELECT t FROM Team t WHERE t.teamAdmin = ?1")
+    List<Team> findTeamsWhereUserIsAdmin(User user);
+    
+//    @Query("INSERT INTO user_team (user_id, team_id) VALUES ('1', '1')")
+//    Integer addUserToTeam(User user, Team team);
 }

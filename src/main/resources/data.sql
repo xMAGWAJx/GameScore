@@ -10,7 +10,8 @@ CREATE TABLE `user_team` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) unsigned NOT NULL,
   `team_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT UC_Team UNIQUE (`user_id`,`team_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- User roles
@@ -80,9 +81,9 @@ insert into user_role(user_id, role_id) values (8,2);
 
 -- Team
 
-insert into team (id, name, created_date) values (1, 'Tele2', '2017-11-06 15:41:11');
-insert into team (id, name, created_date) values (2, 'JavaCourse2', '2017-11-05 10:42:51');
-insert into team (id, name, created_date) values (3, 'Lets play', '2017-11-04 19:52:31');
+insert into team (id, name, team_admin_id, created_date) values (1, 'Tele2', 3, '2017-11-06 15:41:11');
+insert into team (id, name, team_admin_id, created_date) values (2, 'JavaCourse2', 4, '2017-11-05 10:42:51');
+insert into team (id, name, team_admin_id, created_date) values (3, 'Lets play', 7, '2017-11-04 19:52:31');
 
 -- User_team
 
