@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,7 +38,8 @@ public class Result implements Serializable {
     
     //Win, Lose, Draft
     @Column(name = "result")
-    private String result;
+    @Enumerated(EnumType.STRING)
+    private GameStatus result;
     
     @Column(name = "score")
     private Integer score;
@@ -73,14 +76,6 @@ public class Result implements Serializable {
         this.team = team;
     }
 
-    public String getResult() {
-        return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
-    }
-
     public Integer getScore() {
         return score;
     }
@@ -88,4 +83,15 @@ public class Result implements Serializable {
     public void setScore(Integer score) {
         this.score = score;
     }
+
+    public GameStatus getResult() {
+        return result;
+    }
+
+    public void setResult(GameStatus result) {
+        this.result = result;
+    }
+    
+    
+    
 }

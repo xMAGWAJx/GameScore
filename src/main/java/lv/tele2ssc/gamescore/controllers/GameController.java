@@ -3,11 +3,13 @@ package lv.tele2ssc.gamescore.controllers;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import jdk.nashorn.internal.objects.NativeArray;
 import lv.tele2ssc.gamescore.model.Game;
+import lv.tele2ssc.gamescore.model.GameStatus;
 import lv.tele2ssc.gamescore.model.Result;
 import lv.tele2ssc.gamescore.model.Results;
 import lv.tele2ssc.gamescore.repositories.GameRepository;
@@ -37,13 +39,28 @@ public class GameController {
 //        g.setState("COMPLETED");
         
         List<Result> db_result = resultRepository.findByActivity(name.toLowerCase());
-        List<Results> results = new ArrayList<Results>();
+        
+        
+        
+        Map<Long, Results> results = new HashMap<>();
         for(Result r : db_result) {
-            Results res = new Results();
-            res.setTeamName(r.getTeam().getName());
-            res.setScore(r.getScore());
-
-            results.add(res);
+            Results res = results.get(r.getTeam().getId());
+            
+            if (res == null) {
+                res = new Results();
+                res.setTeamName(r.getTeam().getName());
+                results.put(r.getTeam().getId(), res);
+            }
+            
+            res.setGameCount(res.getGameCount()+1);
+            
+            if (r.getResult() == GameStatus.WIN) {
+                res.setWinCount(res.getWinCount()+1);
+            }
+            
+            if (r.getResult() == GameStatus.LOSE) {
+                res.setLossCount(res.getLossCount()+1);
+            }
         }
         
         //logger.debug(results);
@@ -53,7 +70,7 @@ public class GameController {
 
         //System.out.println(groupByTeam);
                 
-        model.addAttribute("results", results);
+        model.addAttribute("results", results.values());
         return name;
     }
     

@@ -12,6 +12,7 @@ import java.util.Set;
 import javax.validation.Valid;
 import lv.tele2ssc.gamescore.model.Activity;
 import lv.tele2ssc.gamescore.model.Game;
+import lv.tele2ssc.gamescore.model.GameStatus;
 import lv.tele2ssc.gamescore.model.Result;
 import lv.tele2ssc.gamescore.model.ResultForm;
 import lv.tele2ssc.gamescore.model.Team;
@@ -77,6 +78,8 @@ public class ResultController {
         r1.setGame(game);
         r1.setTeam(team1);
         r1.setScore(result.getTeamScore1Id());
+        
+      
         results.add(r1);
         
         resultService.save(r1);
@@ -88,12 +91,23 @@ public class ResultController {
             r2.setTeam(team2);
             r2.setScore(result.getTeamScore2Id());
             results.add(r2);
+            
+            if (r1.getScore() > r2.getScore()) {
+                r1.setResult(GameStatus.WIN);  
+                r2.setResult(GameStatus.LOSE);
+            } else if (r1.getScore() < r2.getScore()) {
+                r2.setResult(GameStatus.WIN);  
+                r1.setResult(GameStatus.LOSE);
+            } else {
+                r1.setResult(GameStatus.DRAFT);  
+                r2.setResult(GameStatus.DRAFT);
+            }
+            resultService.save(r1);
             resultService.save(r2);
         }
         
         game.setResults(results);
- 
-        return "redirect:/";
+        return "redirect:/game/" + activity.getName().toLowerCase();
     }
 
     @RequestMapping(path = "/add-result", method = RequestMethod.GET)

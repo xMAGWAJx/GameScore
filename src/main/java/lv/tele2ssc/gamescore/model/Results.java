@@ -8,11 +8,11 @@ import java.io.Serializable;
  */
 public class Results implements Serializable {
     private String teamName;
-    private Integer score;
+    private int score;
     private String rank;
-    private Integer gameCount;
-    private Integer winCount;
-    private Integer lossCount;
+    private int gameCount;
+    private int winCount;
+    private int lossCount;
 
     public String getTeamName() {
         return teamName;
@@ -22,11 +22,11 @@ public class Results implements Serializable {
         this.teamName = teamName;
     }
 
-    public Integer getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(Integer score) {
+    public void setScore(int score) {
         this.score = score;
     }
 
@@ -38,27 +38,27 @@ public class Results implements Serializable {
         this.rank = rank;
     }
 
-    public Integer getGameCount() {
+    public int getGameCount() {
         return gameCount;
     }
 
-    public void setGameCount(Integer gameCount) {
+    public void setGameCount(int gameCount) {
         this.gameCount = gameCount;
     }
 
-    public Integer getWinCount() {
+    public int getWinCount() {
         return winCount;
     }
 
-    public void setWinCount(Integer winCount) {
+    public void setWinCount(int winCount) {
         this.winCount = winCount;
     }
 
-    public Integer getLossCount() {
+    public int getLossCount() {
         return lossCount;
     }
 
-    public void setLossCount(Integer lossCount) {
+    public void setLossCount(int lossCount) {
         this.lossCount = lossCount;
     }
 }

@@ -102,22 +102,45 @@ insert into user_team (user_id, team_id) values (5, 3);
 --Register a game (Football)
 insert into game (id, activity_id, state) values (1, 3, 'COMPLETED');
 --Result for team Tele2
-insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 1, 1, 6, 'Lose');
+insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 1, 1, 6, 'LOSE');
 --Result for team Lets play
-insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 1, 3, 10, 'Win');
+insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 1, 3, 10, 'WIN');
 
 --Register a game (Football)
 insert into game (id, activity_id, state) values (2, 3, 'COMPLETED');
 --Result for team Tele2
-insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 2, 1, 9, 'Lose');
+insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 2, 1, 9, 'LOSE');
 --Result for team Lets play
-insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 2, 3, 10, 'Win');
+insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 2, 3, 10, 'WIN');
+
+
+--Register a game (PingPong)
+insert into game (id, activity_id, state) values (3, 1, 'COMPLETED');
+--Result for team Tele2
+insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 3, 1, 15, 'LOSE');
+--Result for team Lets play
+insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 3, 3, 17, 'WIN');
+
+--Register a game (Novus)
+insert into game (id, activity_id, state) values (4, 2, 'COMPLETED');
+--Result for team Tele2
+insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 4, 1, 16, 'LOSE');
+--Result for team Lets play
+insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 4, 3, 19, 'WIN');
+
+--Register a game (Darts)
+insert into game (id, activity_id, state) values (5, 6, 'COMPLETED');
+--Result for team Tele2
+insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 5, 1, 22, 'LOSE');
+--Result for team Lets play
+insert into result (created_Date, game_id, team_id, score, result) values (current_timestamp, 5, 3, 23, 'WIN');
+
 
 
 -- Result 
 
 --team_a wins
---insert into result (id, team_a_id, result_a) values (1, 1, 'Win');
+--insert into result (id, team_a_id, result_a) values (1, 1, 'WIN');
 --insert into result (id, team_b_id, result_b) values (2, 3, 'Lost');
 
 --draw
@@ -126,7 +149,7 @@ insert into result (created_Date, game_id, team_id, score, result) values (curre
 
 --team_b wins
 --insert into result (id, team_a_id, result_a) values (5, 1, 'Lost');
---insert into result (id, team_b_id, result_b) values (6, 3, 'Win');
+--insert into result (id, team_b_id, result_b) values (6, 3, 'WIN');
 
 
 
