@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main}">
+    <head>
+        <title>All Top</title>
+
+    </head>
+    <body>
+
+        <div layout:fragment="content">
+
+            <div class="w3-row w3-margin w3-centered">
+                <div class="w3-panel">
+                    <nav aria-label="breadcrumb" role="navigation">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item" aria-current="page"><a th:href="@{/participant-list}">Participants</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><strong>Team: <span th:text="${team.name}"></span><strong></li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="t2-margin-top s s12 m4 l3">
+                    <div th:if="${team}">
+
+                        <div class="w3-panel" th:if="${team.teamAdmin.id==currentUser.id}" >
+                            <form th:action="@{/participant-list/teams/{id}/add-member(id=${team.id})}" method="POST" th:object="${newMember}">
+                                <input th:field="*{userId}" id="new-user-id" type="hidden" value=""/>
+                                <input th:field="*{memberAction}" type="hidden" value="0"/>
+                                <div class="w3-row w3-right-align">
+                                    <div class="w3-col m10 w3-right-align">
+                                        <input class="w3-input w3-border" th:field="*{userName}"  type="text" id="new-user-name" placeholder="Type to search for user">
+                                        </input>
+                                    </div>
+                                    <div class="w3-col m2">
+                                        <button class="w3-btn w3-green w3-margin-left">Add member</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="w3-panel">
+                        <table class="w3-table-all w3-hoverable" >
+                            <tr>
+                                <th class="w3-text-grey">Full name</th>
+                                <th class="w3-text-grey">Email</th>
+                                <th class="w3-col s2"></th>
+                            </tr>
+                            <tr th:each="member: ${members}">
+
+                                <td> <a th:href="@{/participant-list/users/{user}(user=${member.id})}" th:text="${member.fullName}"></a> </td>
+                                <td> <p th:text="${member.email}"></p> </td>
+                                <td>
+                                    <div th:if="${team}">
+                                        <a th:if="${team.teamAdmin.id==currentUser.id}" th:href="@{/participant-list/teams/{id}/remove-member/{userId}(id=${team.id},userId=${member.id})}" class="w3-btn fa fa-remove">
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <script>
+
+                $(document).ready(function () {
+                    let userName = $("#new-user-name");
+                    let userIdField = $("#new-user-id");
+                    userName.autocomplete({
+                        source: "/rest/api/users/search",
+                        change: function (event, item) {
+                            if (!item) {
+                                userIdField.val("");
+                            }
+                        },
+                        select: function (event, item) {
+                            userIdField.val(item.item.id);
+                        }
+                    }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                        item.value = item.fullName;
+                        return $("<li>")
+                                .attr("data-value", item)
+                                .append($("<div>").text(item.fullName))
+                                .appendTo(ul);
+                    };
+
+                })
+            </script>
+        </div>
+
+    </body>
+</html>

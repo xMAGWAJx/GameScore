@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main}">
+    <head>
+        <title>New user registration</title>
+
+    </head>
+    <body>
+
+        <div layout:fragment="content">
+            <div class="w3-row w3-margin">
+                <form th:action="@{/participant-list/teams/add}" method="POST" class="w3-display-container w3-centered" th:object="${teamData}">
+                    <div class=" w3-col m4 s12 w3-display-topmiddle">
+                        <div class="w3-panel">                           
+
+                            <label>Team name</label>
+                            <input class="w3-input w3-bordered" th:classappend="${#fields.hasErrors('fullName')}? t2-box-mandatory" type="text" th:field="*{fullName}"/>
+                            <div class="alert alert-danger" th:if="${#fields.hasErrors('fullName')}">
+                                <p th:errors="*{fullName}"></p>    
+                            </div> 
+
+                        </div>
+                        <div class="w3-panel">
+                            <button class="w3-col m12 w3-button w3-green" type="submit">Create</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+           
+        </div>
+
+    </body>
+</html>

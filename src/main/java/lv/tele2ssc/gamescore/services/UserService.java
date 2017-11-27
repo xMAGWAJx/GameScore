@@ -38,5 +38,16 @@ public class UserService {
     public List<User> findAll(){
         return (List<User>)userRepository.findAll();
     }
+    public List<User> findByPartialName(String partialName){
+        List<User> list1=userRepository.findByFullNameContainingIgnoreCase(partialName);
+        List<User> list2=userRepository.findByEmailContainingIgnoreCase(partialName);
+        for (User usr: list2){
+            if (!list1.contains(usr)){
+                list1.add(usr);
+            }
+        }
+        list1.sort((User u1,User u2)->u1.getFullName().compareTo(u2.getFullName()));
+        return list1;
+    }
     
 }

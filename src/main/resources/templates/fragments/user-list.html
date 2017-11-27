@@ -1,0 +1,19 @@
+<html>
+    <head>
+       
+    </head>
+    <body>
+        <div th:fragment="basic(users)">            
+            <table class="w3-table-all w3-hoverable w3-margin-top" >
+                <tr>
+                    <th class="w3-text-grey">Full name</th>
+                    <th class="w3-text-grey">Email</th>                                            
+                </tr>
+                <tr th:each="user: ${users}">
+                    <td> <a th:href="@{/participant-list/users/{id}(id=${user.id})}" th:text="${user.fullName}"></a> </td>
+                    <td> <p th:text="${user.email}"></p> </td>                                            
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

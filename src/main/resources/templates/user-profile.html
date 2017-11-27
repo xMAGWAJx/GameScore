@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main}">
+    <head>
+        <title>All Top</title>
+
+    </head>
+    <body>
+
+        <div layout:fragment="content">
+
+            <div class="w3-row w3-margin w3-centered">
+                <div class="w3-container t2-margin-top s s12 m4 l3 ">
+                    <div>
+                         <div th:if="${user}" >                       
+                            <nav aria-label="breadcrumb" role="navigation">
+                                <ul class="breadcrumb">                                   
+                                    <li class="breadcrumb-item active" aria-current="page"><strong>User: <span th:text="${user.fullName}"></span><strong></li>
+                                </ul>
+                            </nav>
+                        </div>
+                       
+                        <div th:replace="fragments/team-list::basic(${teams})"></div>
+                        
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </body>
+</html>

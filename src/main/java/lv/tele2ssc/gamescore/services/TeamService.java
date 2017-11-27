@@ -30,7 +30,15 @@ public class TeamService {
         return teamRepository.findByName(name); 
     }
     public List<Team> findByUser(User user){
-        return teamRepository.findByUser(user);   
+        List<Team> participant=teamRepository.findByUser(user);
+        List<Team> owner=teamRepository.findTeamsWhereUserIsAdmin(user);
+        for (Team team: owner){
+            if (!participant.contains(team)){
+                participant.add(team);
+            }
+            
+        }
+        return participant;   
     }
     public List<Team> findAll(){
         return (List<Team>)teamRepository.findAll();
@@ -40,4 +48,10 @@ public class TeamService {
         return teamRepository.findOne(team1Id);
     }
     
+    public Team addNewTeam(Team newTeam){
+        return teamRepository.save(newTeam);
+    }
+    public void save(Team team){
+        teamRepository.save(team);
+    }
 }

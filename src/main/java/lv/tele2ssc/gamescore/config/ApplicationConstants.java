@@ -12,4 +12,5 @@ package lv.tele2ssc.gamescore.config;
 public class ApplicationConstants {
     public static final String ROLE_ADMIN="admin";
     public static final String ROLE_USER="user";
+    public static final String USER_CONTEXT_KEY="currentUser";
 }

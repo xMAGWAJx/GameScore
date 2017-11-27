@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main}">
+    <head>
+        <title>All Top</title>
+
+    </head>
+    <body>
+
+        <div layout:fragment="content">
+
+            <div class="w3-row w3-margin w3-centered">
+                <div class="w3-container t2-margin-top s s12 m4 l3 ">
+                    <div>
+                         <div th:if="${user}" >                       
+                            <nav aria-label="breadcrumb" role="navigation">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item" aria-current="page">
+                                        <a th:href="@{/participant-list}">Participants</a>
+                                        
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page"><strong>User: <span th:text="${user.fullName}"></span><strong></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" th:classappend="${teams}?'active':''">
+                                
+                                <a th:href="@{/participant-list/teams}" aria-controls="teams" role="tab" >Teams</a>
+                               
+                                
+                            </li>
+                            <li th:if="not ${user}" role="presentation" th:classappend="${users}?'active':''"><a th:href="@{/participant-list/users}" aria-controls="individual" role="tab">Individual</a></li>   
+                            <li sec:authorize="isAuthenticated()">
+                                <a th:href="@{/participant-list/teams/add}" title="Create new team">Create new team</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" th:classappend="${teams}?'active':''" class="tab-pane" id="teams" th:if="${teams}">
+                                <div th:replace="fragments/team-list::basic(${teams})"></div>
+                            </div>
+                            <div role="tabpanel" th:classappend="${users}?'active':''" class="tab-pane" id="individual" th:if="${users}">                                
+
+                                <div th:replace="fragments/user-list::basic(${users})"></div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </body>
+</html>

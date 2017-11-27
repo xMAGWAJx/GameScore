@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+       
+    </head>
+    <body>
+        <div th:fragment="basic(teams)">
+             <table class="w3-table-all w3-hoverable w3-margin-top" >
+                <tr>
+                    <th class="w3-text-grey">Team Name</th>
+                    <th class="w3-text-grey">Members</th>
+                </tr>
+                <tr th:each="team: ${teams}">
+
+                    <td> <a th:href="@{/participant-list/teams/{id}(id=${team.id})}" th:text="${team.name}"></a> </td>
+                    <td> <p th:text="${team.users.size()+1}"></p> </td>
+
+
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

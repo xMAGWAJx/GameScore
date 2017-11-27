@@ -16,6 +16,7 @@
            <div th:replace="fragments/menu-item::menu-item('/game/press-bar','Press bar','')"></div>
            <div th:replace="fragments/menu-item::menu-item('/game/darts','Darts','')"></div>
            <div th:replace="fragments/menu-item::menu-item('/game/computer','Computer games','')"></div>
+           <div th:replace="fragments/menu-item::menu-item('/participant-list','Participants','')"></div>
            
             
             <a sec:authorize="not isAuthenticated()" th:replace="fragments/menu-item::menu-item-right('/login','Log in','fa fa-sign-in')">
@@ -24,10 +25,10 @@
             <a sec:authorize="isAuthenticated()" th:replace="fragments/menu-item::menu-item-right('/logout','Log out - '+ ${#authentication.name},'fa fa-sign-out')">
                
             </a>
-           <a sec:authorize="isAuthenticated()" th:replace="fragments/menu-item::menu-item-right('/login','Settings','fa fa-cog')">
+           <a sec:authorize="isAuthenticated()" th:replace="fragments/menu-item::menu-item-right('/user/profile','Profile','fa fa-cog')">
                
             </a>
-           <a sec:authorize="isAuthenticated()" th:replace="fragments/menu-item::menu-item-right('/add-result','Add result','fa fa-plus')">
+           <a th:replace="fragments/menu-item::menu-item-right('/add-result','Add result','fa fa-plus')">
                
             </a>
             <a href="#" class="w3-bar-item w3-button w3-right w3-hide-small navbar-font"><i class="fa fa-search"></i></a>

@@ -1,7 +1,7 @@
 <html>  
     <body>
         
-        <a th:fragment="menu-item(path,text,icon)" th:href="@{${path}}" th:classappend="${#httpServletRequest.requestURI}==${path}?'w3-red':''" class="w3-bar-item w3-button w3-hide-small navbar-font" th:text="${text}">
+        <a th:fragment="menu-item(path,text,icon)" th:href="@{${path}}" th:classappend="${#strings.startsWith(#httpServletRequest.requestURI,path)}?'w3-red':''" class="w3-bar-item w3-button w3-hide-small navbar-font" th:text="${text}">
             <i th:if="${icon}!=''" th:class="${icon}"></i>
             
         </a>

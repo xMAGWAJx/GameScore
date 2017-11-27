@@ -2,6 +2,7 @@ package lv.tele2ssc.gamescore;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import lv.tele2ssc.gamescore.config.ApplicationConstants;
 import lv.tele2ssc.gamescore.model.User;
 import lv.tele2ssc.gamescore.services.UserService;
 import org.slf4j.Logger;
@@ -36,16 +37,22 @@ public class CurrentUserInterceptor extends HandlerInterceptorAdapter {
         // Retriving email of currently logged in user.
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth == null) {
-            modelAndView.addObject("currentUser", anonymous);
+            if (modelAndView != null) {
+                modelAndView.addObject(ApplicationConstants.USER_CONTEXT_KEY, anonymous);
+            }
             return;
         }
         String email = auth.getName();
         // if user isn't logged in yet - email is null.
         if (email == null) {
-            modelAndView.addObject("currentUser", anonymous);
+            if (modelAndView != null) {
+                modelAndView.addObject(ApplicationConstants.USER_CONTEXT_KEY, anonymous);
+            }
         } else {
             User currentUser = userService.findByEmail(email);
-            modelAndView.addObject("currentUser", currentUser == null ? anonymous : currentUser);
+            if (modelAndView != null) {
+                modelAndView.addObject(ApplicationConstants.USER_CONTEXT_KEY, currentUser == null ? anonymous : currentUser);
+            }
         }
     }
 
