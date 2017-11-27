@@ -20,6 +20,9 @@ public interface TeamRepository extends CrudRepository<Team, Long> {
     @Query("SELECT t FROM Team t WHERE ?1 member of t.users")
     List<Team> findByUser(User user);
     
+    @Query("SELECT t FROM Team t WHERE ?1 not member of t.users")
+    List<Team> findAllExceptUser(User user);
+    
     @Query("SELECT t FROM Team t WHERE t.teamAdmin = ?1")
     List<Team> findTeamsWhereUserIsAdmin(User user);
     

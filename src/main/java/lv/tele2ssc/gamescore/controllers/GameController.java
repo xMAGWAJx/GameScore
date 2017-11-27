@@ -8,10 +8,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import jdk.nashorn.internal.objects.NativeArray;
+import lv.tele2ssc.gamescore.model.Activity;
 import lv.tele2ssc.gamescore.model.Game;
 import lv.tele2ssc.gamescore.model.GameStatus;
 import lv.tele2ssc.gamescore.model.Result;
 import lv.tele2ssc.gamescore.model.Results;
+import lv.tele2ssc.gamescore.repositories.ActivityRepository;
 import lv.tele2ssc.gamescore.repositories.GameRepository;
 import lv.tele2ssc.gamescore.repositories.ResultRepository;
 import org.slf4j.Logger;
@@ -31,13 +33,17 @@ public class GameController {
     
     @Autowired
     private ResultRepository resultRepository;
+    @Autowired
+    private ActivityRepository activityRepository;
     
     @RequestMapping(path = "/game/{name}", method = RequestMethod.GET)
     public String page(@PathVariable String name, Model model) { 
 //        Game g = new Game();
 //        g.setPlace("New Building");
 //        g.setState("COMPLETED");
-        
+        name = name.replace('-', ' ');
+        System.out.println(name.toLowerCase());
+        Activity activity = activityRepository.findByName(name.toLowerCase());
         List<Result> db_result = resultRepository.findByActivity(name.toLowerCase());
         
         
@@ -61,6 +67,8 @@ public class GameController {
             if (r.getResult() == GameStatus.LOSE) {
                 res.setLossCount(res.getLossCount()+1);
             }
+            
+            res.setScore(res.getScore() + r.getScore());
         }
         
         //logger.debug(results);
@@ -70,8 +78,12 @@ public class GameController {
 
         //System.out.println(groupByTeam);
                 
+        String template = "activity_";
+        template += activity.getSingle() == 0 ? "multiple" : "single";
+        
         model.addAttribute("results", results.values());
-        return name;
+        model.addAttribute("name", activity.getName());
+        return template;
     }
     
 }
