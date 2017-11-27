@@ -6,31 +6,38 @@
     <body>
 
 
-        <div class="w3-bar w3-dark-grey w3-large shadow" th:fragment="main">           
-            <a href="/" class="w3-bar-item w3-button w3-red logo"><i class="fa fa-th-list"></i> GameScore</a>
-            <a href="/game/ping-pong" class="w3-bar-item w3-button w3-hide-small navbar-font"> Ping Pong</a>
-            <a href="/game/novus" class="w3-bar-item w3-button w3-hide-small navbar-font">Novus</a>
-            <a href="/game/football" class="w3-bar-item w3-button w3-hide-small navbar-font"><i class="fa fa-futbol-o"></i> Football</a>
-            <a href="/game/pull-bar" class="w3-bar-item w3-button w3-hide-small navbar-font">Pull up bar</a>
-            <a href="/game/press-bar" class="w3-bar-item w3-button w3-hide-small navbar-font">Press bar</a>
-            <a href="/game/darts" class="w3-bar-item w3-button w3-hide-small navbar-font">Darts</a>
-            <a href="/game/computer" class="w3-bar-item w3-button w3-hide-small navbar-font">Computer games</a>
-            <a sec:authorize="not isAuthenticated()" href="/login" title="Log in" class="w3-bar-item w3-button w3-right w3-hide-small navbar-font">
-                <i class="fa fa-sign-in">
-                </i>
+        <div class="w3-bar w3-dark-grey w3-large shadow" th:fragment="main">                
+           
+            <div th:replace="fragments/menu-item::menu-item('/','GameScore','')"></div>
+           <div th:replace="fragments/menu-item::menu-item('/game/ping-pong','Ping Pong','')"></div>
+           <div th:replace="fragments/menu-item::menu-item('/game/novus','Novus','')"></div>
+           <div th:replace="fragments/menu-item::menu-item('/game/football','Football','fa fa-futbol-o')"></div>
+           <div th:replace="fragments/menu-item::menu-item('/game/pull-bar','Pull up bar','')"></div>
+           <div th:replace="fragments/menu-item::menu-item('/game/press-bar','Press bar','')"></div>
+           <div th:replace="fragments/menu-item::menu-item('/game/darts','Darts','')"></div>
+           <div th:replace="fragments/menu-item::menu-item('/game/computer','Computer games','')"></div>
+           
+            
+            <a sec:authorize="not isAuthenticated()" th:replace="fragments/menu-item::menu-item-right('/login','Log in','fa fa-sign-in')">
+               
             </a>
-            <a sec:authorize="isAuthenticated()" href="/logout" th:title="'Log out - '+${#authentication.name}" class="w3-bar-item w3-button w3-right w3-hide-small navbar-font">
-                <i class="fa fa-sign-out"></i>
+            <a sec:authorize="isAuthenticated()" th:replace="fragments/menu-item::menu-item-right('/logout','Log out - '+ ${#authentication.name},'fa fa-sign-out')">
+               
+            </a>
+           <a sec:authorize="isAuthenticated()" th:replace="fragments/menu-item::menu-item-right('/login','Settings','fa fa-cog')">
+               
+            </a>
+           <a sec:authorize="isAuthenticated()" th:replace="fragments/menu-item::menu-item-right('/add-result','Add result','fa fa-plus')">
+               
             </a>
             <a href="#" class="w3-bar-item w3-button w3-right w3-hide-small navbar-font"><i class="fa fa-search"></i></a>
-            <a href="#" class="w3-bar-item w3-button w3-right w3-hide-small navbar-font"><i class="fa fa-envelope"></i></a>
-            <a href="/login" class="w3-bar-item w3-button w3-right w3-hide-small navbar-font"><i class="fa fa-cog"></i></a>
-            <a href="#" class="w3-bar-item w3-button w3-right w3-hide-small navbar-font"><i class="fa fa-bell"></i>&nbsp;<span class="w3-badge w3-small w3-red">8</span></a>
+            <a th:if="${false}" sec:authorize="isAuthenticated()" th:href="@{/user/mail}" class="w3-bar-item w3-button w3-right w3-hide-small navbar-font"><i class="fa fa-envelope"></i></a>
+            <a th:if="${false}" sec:authorize="isAuthenticated()" th:href="@{/user/notifications}" class="w3-bar-item w3-button w3-right w3-hide-small navbar-font"><i class="fa fa-bell"></i>&nbsp;<span class="w3-badge w3-small w3-red">8</span></a>
 
             <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
-            <a href="/add-result" class="w3-bar-item w3-button w3-red w3-right w3-hide-small navbar-font" title="Add result"><i class="fa fa-plus"></i></a>
-            <a href="" class="w3-bar-item w3-button w3-right w3-hide-small navbar-font" th:text="${currentUser.fullName}">Full name</a>
-            
+           
+            <a sec:authorize="isAuthenticated()" href="" class="w3-bar-item w3-button w3-right w3-hide-small navbar-font" th:text="${currentUser.fullName}">Full name</a>
+           
         </div>
 
         <!--        <div id="demo" class="w3-bar w3-light-grey w3-border w3-large" th:fragment="main">

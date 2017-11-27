@@ -1,0 +1,13 @@
+<html>  
+    <body>
+        
+        <a th:fragment="menu-item(path,text,icon)" th:href="@{${path}}" th:classappend="${#httpServletRequest.requestURI}==${path}?'w3-red':''" class="w3-bar-item w3-button w3-hide-small navbar-font" th:text="${text}">
+            <i th:if="${icon}!=''" th:class="${icon}"></i>
+            
+        </a>
+         <a th:fragment="menu-item-right(path,title,icon)" th:href="@{${path}}" th:title="${title}" th:classappend="${#httpServletRequest.requestURI}==${path}?'w3-red':''" class="w3-bar-item w3-right w3-button w3-hide-small navbar-font ">
+            <i th:if="${icon}!=''" th:class="${icon}"></i>
+            
+        </a>
+    </body>
+</html>

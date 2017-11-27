@@ -23,9 +23,9 @@ public class UserRegistrationForm implements Serializable {
     @NotEmpty(message = "Email field may not be empty")
     @Email
     private String email;
-    @Length(min = 5,message = "Password should be more then 4 characters long")
+    @Length(min = 5,message = "Password should be at least 5 characters long")
     private String password;
-    @Length(min = 5,message = "Password should be more then 4 characters long")
+    @Length(min = 5,message = "Password should be at least 5 characters long")
     private String passwordConfirm;
     
     private String passwordMismatch;
