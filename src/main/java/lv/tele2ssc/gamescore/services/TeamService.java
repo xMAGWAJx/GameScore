@@ -48,6 +48,10 @@ public class TeamService {
         return teamRepository.findOne(team1Id);
     }
     
+    public List<Team> findAllExceptUser(User user){
+        return teamRepository.findAllExceptUser(user);   
+    }
+    
     public Team addNewTeam(Team newTeam){
         return teamRepository.save(newTeam);
     }

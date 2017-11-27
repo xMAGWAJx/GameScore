@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main}">
     <head>
-        <title>Computer Games</title>
+        <title th:text="${name}"></title>
 
     </head>
     <body>
@@ -21,9 +21,9 @@
                     <tr th:each="r : ${results}">
                         <!--<td><a th:href="@{/manage/user(userId=${u.fullName})}"  th:text="${u.fullName}" ></a></td>-->
                         <td> <p th:text="${r.teamName}"></p> </td>
-                        <td> <p th:text="${r.score}"></p> </td>
-                        <td> <p th:text="Rank"></p> </td>
-                        <td> <p th:text="GameCount"></p> </td>
+                        <td> <p th:text="${r.winCount}"></p> </td>
+                        <td> <p th:text="${r.lossCount}"></p> </td>
+                        <td> <p th:text="${r.gameCount}"></p> </td>
                         <td><button class="w3-button w3-round w3-red">Challenge</button></td>
                     </tr>
                 </table>

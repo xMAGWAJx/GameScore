@@ -107,7 +107,8 @@ public class ResultController {
         }
         
         game.setResults(results);
-        return "redirect:/game/" + activity.getName().toLowerCase();
+
+        return "redirect:/game/" + activity.getName().toLowerCase().replace(' ', '-');
     }
 
     @RequestMapping(path = "/add-result", method = RequestMethod.GET)
@@ -118,7 +119,7 @@ public class ResultController {
         List<Team> userTeams = teamService.findByUser(currentUser);
         model.addAttribute("userTeams", userTeams);
         
-        List<Team> teams = teamService.findAll();
+        List<Team> teams = teamService.findAllExceptUser(currentUser);
         model.addAttribute("teams", teams);
         List<Activity> activities = activityService.findAll();
         model.addAttribute("activities", activities);

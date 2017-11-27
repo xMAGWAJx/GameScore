@@ -2,6 +2,7 @@ package lv.tele2ssc.gamescore.repositories;
 
 import java.util.List;
 import lv.tele2ssc.gamescore.model.Activity;
+import lv.tele2ssc.gamescore.model.Team;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -15,4 +16,7 @@ import org.springframework.stereotype.Repository;
 public interface ActivityRepository extends CrudRepository<Activity, Long> {
     @Override
     List<Activity> findAll();
+    
+    @Query("SELECT a FROM Activity a WHERE LOWER(a.name) = ?1")
+    Activity findByName(String name);
 }

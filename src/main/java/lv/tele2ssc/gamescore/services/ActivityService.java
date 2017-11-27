@@ -30,6 +30,9 @@ public class ActivityService {
 
     public Activity findById(Long activityId) {
         return activityRepository.findOne(activityId);
-                
+    }
+
+    public Activity findByName(String name) {
+        return activityRepository.findByName(name);
     }
 }
