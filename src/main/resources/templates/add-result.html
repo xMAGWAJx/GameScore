@@ -50,7 +50,14 @@
                                     </td>
                                     <td>
                                         <p></p>
-                                            <input class="w3-input w3-border w3-round" type="text" placeholder="Date" th:field="*{date}">
+                                            <input class="w3-input w3-border w3-round" type="text" id="result-date" placeholder="Date" th:field="*{date}">
+                                                <script>
+                                                    $(document).ready(function(){
+                                                           $("#result-date").datepicker();
+                                                        
+                                                    })
+                                                    </script>
+                                                    
                                     </td>
                                 </tr>
                                 <tr>
